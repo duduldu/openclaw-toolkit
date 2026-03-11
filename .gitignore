@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Config (keep sample files)
+*.local.json
+!*.sample.json
+
+# Test coverage
+coverage/
+
+# Temporary files
+tmp/
+temp/

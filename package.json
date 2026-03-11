@@ -1,0 +1,38 @@
+{
+  "name": "openclaw-toolkit",
+  "version": "0.1.0",
+  "description": "OpenClaw 开发者工具箱 - CLI 工具、技能模板、实用函数",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/index.js",
+    "start": "node src/index.js",
+    "cli": "node src/cli/index.js",
+    "test": "node --test tests/"
+  },
+  "keywords": [
+    "openclaw",
+    "cli",
+    "tools",
+    "skills"
+  ],
+  "author": "duduldu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/duduldu/openclaw-toolkit.git"
+  },
+  "bin": {
+    "oc-toolkit": "./src/cli/index.js"
+  },
+  "dependencies": {
+    "commander": "^11.0.0",
+    "chalk": "^5.3.0",
+    "ora": "^7.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
