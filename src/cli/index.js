@@ -71,15 +71,28 @@ program
 program
   .command('config')
   .description('配置文件检查')
-  .action(() => {
-    console.log('⚙️ 配置检查');
-    console.log('============');
-    console.log('[TODO] 实现配置文件验证');
-    console.log('');
-    console.log('功能规划:');
-    console.log('  - openclaw.json 语法检查');
-    console.log('  - 必填字段验证');
-    console.log('  - 推荐配置提示');
+  .argument('[command]', '子命令 (check|init|validate)')
+  .argument('[args...]', '参数')
+  .action((command, args) => {
+    if (!command) {
+      console.log('使用：oc-toolkit config <command> [args]');
+      console.log('');
+      console.log('可用命令:');
+      console.log('  check [path]         检查配置文件');
+      console.log('  init                 生成示例配置');
+      console.log('  validate <f> <v>     验证字段值');
+      return;
+    }
+    
+    // 调用 config-checker 模块
+    const { spawn } = require('child_process');
+    const sub = spawn('node', [require('path').join(__dirname, 'config-checker.js'), command, ...args], {
+      stdio: 'inherit'
+    });
+    
+    sub.on('close', (code) => {
+      process.exit(code);
+    });
   });
 
 program
