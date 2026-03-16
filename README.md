@@ -5,9 +5,9 @@ OpenClaw 开发者工具箱 - 提升你的 OpenClaw 开发体验
 ## 📦 功能模块
 
 ### CLI 工具
-- **session-manager** - 会话管理工具
-- **cron-generator** - Cron 任务生成器
-- **config-checker** - 配置文件检查工具
+- **session-manager** - 会话管理工具（list/info/clean/export）
+- **cron-generator** - Cron 任务生成器（presets/generate/parse/next）
+- **config-checker** - 配置文件检查工具（check/init/validate）
 
 ### Skills 模板
 - **skill-creator** - 技能生成器
