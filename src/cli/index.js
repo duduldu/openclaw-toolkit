@@ -43,15 +43,29 @@ program
 program
   .command('cron')
   .description('Cron 任务生成器')
-  .action(() => {
-    console.log('⏰ Cron 生成器');
-    console.log('==============');
-    console.log('[TODO] 实现 Cron 表达式生成器');
-    console.log('');
-    console.log('功能规划:');
-    console.log('  - 自然语言转 Cron 表达式');
-    console.log('  - Cron 表达式解析');
-    console.log('  - 下次执行时间计算');
+  .argument('[command]', '子命令 (presets|generate|parse|next)')
+  .argument('[args...]', '参数')
+  .action((command, args) => {
+    if (!command) {
+      console.log('使用：oc-toolkit cron <command> [args]');
+      console.log('');
+      console.log('可用命令:');
+      console.log('  presets           列出常用预设');
+      console.log('  generate <name>   生成 Cron 表达式');
+      console.log('  parse <expr>      解析 Cron 表达式');
+      console.log('  next <expr>       计算下次执行时间');
+      return;
+    }
+    
+    // 调用 cron-generator 模块
+    const { spawn } = require('child_process');
+    const sub = spawn('node', [require('path').join(__dirname, 'cron-generator.js'), command, ...args], {
+      stdio: 'inherit'
+    });
+    
+    sub.on('close', (code) => {
+      process.exit(code);
+    });
   });
 
 program
