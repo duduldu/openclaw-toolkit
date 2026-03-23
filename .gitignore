@@ -27,3 +27,10 @@ coverage/
 # Temporary files
 tmp/
 temp/
+
+# Local sync scripts (not for public repo)
+monitor-toolkit.ps1
+sync-toolkit.ps1
+install-toolkit-service.ps1
+uninstall-toolkit-service.ps1
+toolkit-sync-log.txt
