@@ -1,6 +1,6 @@
 {
   "name": "openclaw-toolkit",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "OpenClaw 开发者工具箱 - CLI 工具、技能模板、实用函数",
   "main": "index.js",
   "scripts": {

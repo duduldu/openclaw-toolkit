@@ -9,7 +9,7 @@ const { program } = require('commander');
 program
   .name('oc-toolkit')
   .description('OpenClaw 开发者工具箱')
-  .version('0.1.0');
+  .version('0.3.0');
 
 // 子命令
 program
@@ -98,15 +98,27 @@ program
 program
   .command('skill')
   .description('技能模板生成')
-  .action(() => {
-    console.log('🛠️ 技能生成器');
-    console.log('==============');
-    console.log('[TODO] 实现 Skill 模板生成');
-    console.log('');
-    console.log('功能规划:');
-    console.log('  - 交互式创建 Skill');
-    console.log('  - 模板选择');
-    console.log('  - 自动填充骨架代码');
+  .argument('[command]', '子命令 (create|templates)')
+  .argument('[args...]', '参数')
+  .action((command, args) => {
+    if (!command) {
+      console.log('使用：oc-toolkit skill <command> [args]');
+      console.log('');
+      console.log('可用命令:');
+      console.log('  create <name>     创建新技能');
+      console.log('  templates         列出可用模板');
+      return;
+    }
+    
+    // 调用 skill-creator 模块
+    const { spawn } = require('child_process');
+    const sub = spawn('node', [require('path').join(__dirname, 'skill-creator.js'), command, ...args], {
+      stdio: 'inherit'
+    });
+    
+    sub.on('close', (code) => {
+      process.exit(code);
+    });
   });
 
 program.parse();
