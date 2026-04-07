@@ -34,3 +34,9 @@ sync-toolkit.ps1
 install-toolkit-service.ps1
 uninstall-toolkit-service.ps1
 toolkit-sync-log.txt
+
+# Internal company files (never commit sensitive data)
+*internal*
+*encrypted*
+*.sql
+*trace_*
